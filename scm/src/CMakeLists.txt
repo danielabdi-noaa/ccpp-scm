@@ -126,7 +126,8 @@ set(SIMDMULTIARCH   OFF CACHE BOOL "Enable multi-target SIMD instruction sets")
 #------------------------------------------------------------------------------
 # Set compile options
 if (${CMAKE_Fortran_COMPILER_ID} MATCHES "GNU")
-  set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -ggdb -fbacktrace -cpp -fcray-pointer -ffree-line-length-none -fno-range-check")
+  #set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -ggdb -fbacktrace -cpp -fcray-pointer -ffree-line-length-none -fno-range-check")
+  set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -fopenacc -foffload=nvptx-none -fopt-info -fno-stack-protector -lm -ggdb -fbacktrace -cpp -fcray-pointer -ffree-line-length-none -fno-range-check")
   
   if(${CMAKE_Fortran_COMPILER_VERSION} VERSION_GREATER_EQUAL 10)
       set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -fallow-argument-mismatch -fallow-invalid-boz")
@@ -185,8 +186,10 @@ elseif (${CMAKE_Fortran_COMPILER_ID} MATCHES "Intel")
   set(CMAKE_Fortran_FLAGS_BITFORBIT "-O2 -fPIC" CACHE STRING "" FORCE)
 
 elseif (${CMAKE_Fortran_COMPILER_ID} MATCHES "NVHPC")
-  set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -acc -ta=tesla -Minfo=accel")
-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -acc -ta=tesla -Minfo=accel")
+  set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -acc -ta=tesla:cc60,cuda12.0 -Minfo=accel")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -acc -ta=tesla:cc60,cuda12.0 -Minfo=accel")
+  #set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -noacc -Minfo=accel")
+  #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -noacc -Minfo=accel")
   
   if(NOT 32BIT)
       set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -r8")

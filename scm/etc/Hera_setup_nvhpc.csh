@@ -23,7 +23,7 @@ module load cmake/3.20.1
 setenv CMAKE_C_COMPILER $CC
 setenv CMAKE_CXX_COMPILER $CXX
 setenv CMAKE_Fortran_COMPILER $FC
-setenv CMAKE_Platform hera.intel
+setenv CMAKE_Platform hera.nvhpc
 
 #setenv ROOT_DIR "/scratch1/RDARCH/rda-ghpcs/Vanderlei.Vargas/usr/local"
 setenv ROOT_DIR "/scratch2/BMC/gsd-hpcs/Daniel.Abdi/dan-ccpp/installs"

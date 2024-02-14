@@ -28,7 +28,7 @@ g = 9.81
 missing_value = -999
 missing_soil_levels = 4
 
-plot_ext = '.pdf' #.pdf, .eps, .ps, .png (.png is fastest, but raster)
+plot_ext = '.png' #.pdf, .eps, .ps, .png (.png is fastest, but raster)
 
 reload(spr)
 reload(sro)
