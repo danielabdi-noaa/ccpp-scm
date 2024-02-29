@@ -186,8 +186,8 @@ elseif (${CMAKE_Fortran_COMPILER_ID} MATCHES "Intel")
   set(CMAKE_Fortran_FLAGS_BITFORBIT "-O2 -fPIC" CACHE STRING "" FORCE)
 
 elseif (${CMAKE_Fortran_COMPILER_ID} MATCHES "NVHPC")
-  set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -acc -ta=tesla:cc60,cuda12.0 -Minfo=accel")
-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -acc -ta=tesla:cc60,cuda12.0 -Minfo=accel")
+  set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -acc -gpu=ccnative -Minfo=accel")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -acc -gpu=ccnative -Minfo=accel")
   #set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -noacc -Minfo=accel")
   #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -noacc -Minfo=accel")
   

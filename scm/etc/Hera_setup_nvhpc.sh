@@ -8,7 +8,7 @@ export SCM_ROOT=$MYDIR/../..
 
 module purge
 
-module load nvhpc/23.3
+module load nvhpc/24.1
 
 module load cmake/3.20.1
 export CMAKE_C_COMPILER=$CC
